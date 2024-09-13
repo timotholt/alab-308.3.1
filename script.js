@@ -40,12 +40,11 @@ n = 105;
 
 // Start looking for prime numbers upwards from n
 let nextNumToCheckIfPrime = n + 1;
-let searchingForNextPrime = true;
 
 console.log(`Searching for a prime number higher than ${n}, starting with ${nextNumToCheckIfPrime}`);
 
 /* keep looking until we find a prime number */
-while (searchingForNextPrime) {
+primeNumSearch: while(true) {
 
     // Assumption here, not fact
     // let currentTestNumberIsPrime = true;
@@ -66,9 +65,8 @@ while (searchingForNextPrime) {
 
     // If we found a prime number
     if (testDivisor == 1) {
-        searchingForNextPrime = false;
         console.log(`Next prime number after ${n} is ${nextNumToCheckIfPrime}`);
-        break;
+        break primeNumSearch;
     } else {
         console.log (`${nextNumToCheckIfPrime} is not prime.  Checking ${nextNumToCheckIfPrime+1}`);
         
