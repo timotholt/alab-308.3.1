@@ -27,6 +27,7 @@ for (let n = 1; n <= 100; n++) {
         console.log(`(n=${n}) Buzz`);
     else
         // console.log(`(n=${n}) No fizz or buzz`);
+        console.log(n);
     ;
 }
 
@@ -82,21 +83,27 @@ console.log(`==================== Feeling Loopy Part 1 ====================`);
 
 const csvData = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26";
 
-let cellArray = [``,``,``,``];
-let cellNum = 0;
+// let cellArray = [``,``,``,``];
+let cellNum = 1;
 let lastLineOutput = false;
+let cell1 = ``;
+let cell2 = ``;
+let cell3 = ``;
+let cell4 = ``;
 
 /* Loop through every character */
 for (const c of csvData) {
 
     /* Look for new line sequence */
     if (c === `\n`) {
-        console.log(cellArray[0], cellArray[1], cellArray[2], cellArray[3]);
+        console.log(cell1, cell2, cell3, cell4);
         
-        for (i = 0; i < cellArray.length; i++)
-            cellArray[i] = ``;
+        cell1 = ``;
+        cell2 = ``;
+        cell3 = ``;
+        cell4 = ``;
 
-        cellNum = 0;
+        cellNum = 1;
         lastLineOutput = true;
         continue;
     }
@@ -108,48 +115,81 @@ for (const c of csvData) {
     }
     
     /* Add character to end of current cell */
-    cellArray[cellNum] += c;
+    switch (cellNum) {
+        case 1:
+            cell1 += c;
+            break;
+        case 2:
+            cell2 += c;
+            break;
+        case 3:
+            cell3 += c;
+            break;
+        case 4:
+            cell4 += c;
+            break;
+    }
+
     lastLineOutput = false;
 }
 
 if (!lastLineOutput)
-    console.log(cellArray[0], cellArray[1], cellArray[2], cellArray[3]);
+    console.log(cell1, cell2, cell3, cell4);
 
 console.log(`==================== Feeling Loopy Part 2 ====================`);
 // debugger;
 
 const csvData2 = `Index,Mass (kg),Spring 1 (m),Spring 2 (m)\n1,0.00,0.050,0.050\n2,0.49,0.066,0.066\n3,0.98,0.087,0.080\n4,1.47,0.116,0.108\n5,1.96,0.142,0.138\n6,2.45,0.166,0.158\n7,2.94,0.193,0.174\n8,3.43,0.204,0.192\n9,3.92,0.226,0.205\n10,4.41,0.238,0.232`;
 
-let cellArray2 = [``,``,``,``];
-let cellNum2 = 0;
-let lastLineOutput2 = false;
+cellNum = 1;
+lastLineOutput = false;
+cell1 = ``;
+cell2 = ``;
+cell3 = ``;
+cell4 = ``;
 
 /* Loop through every character */
 for (const c of csvData2) {
 
     /* Look for new line sequence */
     if (c === `\n`) {
-        console.log(cellArray2[0], cellArray2[1], cellArray2[2], cellArray2[3]);
+        console.log(cell1, cell2, cell3, cell4);
         
-        for (let i = 0; i < cellArray2.length; i++)
-            cellArray2[i] = ``;
+        cell1 = ``;
+        cell2 = ``;
+        cell3 = ``;
+        cell4 = ``;
 
-        cellNum2 = 0;
-        lastLineOutput2 = true;
+        cellNum = 1;
+        lastLineOutput = true;
         continue;
-        }
+    }
 
     /* Look for comma, if so advance to next cell */
     if (c === `,`) {
-        cellNum2++;
+        cellNum++;
         continue;
     }
     
     /* Add character to end of current cell */
-    cellArray2[cellNum2] += c;
-    lastLineOutput2 = false;
+    switch (cellNum) {
+        case 1:
+            cell1 += c;
+            break;
+        case 2:
+            cell2 += c;
+            break;
+        case 3:
+            cell3 += c;
+            break;
+        case 4:
+            cell4 += c;
+            break;
+    }
+
+    lastLineOutput = false;
 }
 
-if (!lastLineOutput2)
-    console.log(cellArray2[0], cellArray2[1], cellArray2[2], cellArray2[3]);
+if (!lastLineOutput)
+    console.log(cell1, cell2, cell3, cell4);
 
